@@ -1,38 +1,285 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+/* sidebar  */
+.bars {
+  display: none;
+}
+aside {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 20rem;
+  background-color: blanchedalmond;
+}
+.nav {
+  margin: 1rem;
+  list-style: none;
+}
+.nav-item {
+  margin: 1rem;
+  font-size: 1.5rem;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.logo {
+  font-size: 3rem;
+  padding: 0 2rem;
+}
+/* sidebar  */
+
+/* search form  */
+.form-section {
+  margin: 1rem;
+}
+.search-field {
+  outline: 0;
+  height: 2.5rem;
+  width: 50rem;
+  padding: 0.5rem;
+  border: 1px solid grey;
+}
+.search-btn {
+  cursor: pointer;
+  height: 2.5rem;
+  width: 2rem;
+  background-color: transparent;
+  border: 1px solid grey;
+}
+.clear-search-btn {
+  cursor: pointer;
+  position: relative;
+  left: 50rem;
+  width: 2rem;
+  background-color: transparent;
+  border: 0;
+  height: 2.5rem;
+}
+/* search form  */
+
+/* news feed  */
+.news-feed {
+  margin: 2rem auto;
+  width: 75vw;
+  display: flex;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+img {
+  height: 20rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.main-feed {
+  position: relative;
+  height: 20rem;
+  width: 30rem;
+  padding-left: 3rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: flex-start;
 }
-
-.App-link {
-  color: #61dafb;
+.bar {
+  position: absolute;
+  left: 2rem;
+  height: 5rem;
+  width: 0.5rem;
+  background-color: gold;
 }
+.date {
+  color: grey;
+  font-style: italic;
+  margin-bottom: 0.5rem;
+}
+.date span {
+  margin-right: 1rem;
+}
+.read-more button {
+  cursor: pointer;
+  background-color: blanchedalmond;
+  width: 6rem;
+  margin: 1rem 0;
+  padding: 0.75rem;
+  border: 0;
+}
+/* news feed  */
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media (max-width: 1350px) {
+  .bars {
+    position: fixed;
+    display: block;
+    font-size: 2rem;
+    margin: 0.5rem 1rem;
   }
-  to {
-    transform: rotate(360deg);
+  .section-center {
+    margin-top: 3rem;
+  }
+  aside {
+    display: none;
+    /* position: fixed;
+    z-index: 1; */
+  }
+  .form-section {
+    width: 55rem;
+    margin: 1rem auto;
+  }
+  .news-feed {
+    margin: 1rem;
+    width: 90vw;
+    display: flex;
+  }
+}
+@media (max-width: 1190px) {
+  .news-feed {
+    margin: 1rem;
+    width: 95vw;
+    display: flex;
+  }
+  .main-feed {
+    position: relative;
+    height: 20rem;
+    width: auto;
+    padding-left: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+}
+@media (max-width: 1085px) {
+  .form-section {
+    width: 35rem;
+    margin: 1rem auto;
+  }
+  .search-field {
+    outline: 0;
+    height: 2.5rem;
+    width: 30rem;
+  }
+  .clear-search-btn {
+    cursor: pointer;
+    position: relative;
+    left: 30rem;
+  }
+  .news-feed {
+    margin: 1rem 0;
+    width: 95vw;
+    display: block;
+  }
+  .news-feed {
+    margin: 1rem;
+    width: 97vw;
+    display: flex;
+  }
+  img {
+    height: 15rem;
+  }
+  .main-feed {
+    position: relative;
+    height: auto;
+    width: auto;
+    padding-left: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  .date {
+    margin-bottom: 0;
+  }
+  .read-more button {
+    margin-top: 0.5rem;
+  }
+}
+@media (max-width: 855px) {
+  .form-section {
+    width: 30rem;
+    margin: 1rem auto;
+  }
+  .search-field {
+    outline: 0;
+    height: 2.5rem;
+    width: 25rem;
+  }
+  .clear-search-btn {
+    cursor: pointer;
+    position: relative;
+    left: 25rem;
+  }
+  .news-feed {
+    margin: 1rem 0;
+    width: 95vw;
+    display: block;
+  }
+  .img-container {
+    width: 85vw;
+    margin: 0 auto;
+  }
+  img {
+    height: auto;
+    width: inherit;
+    margin: 1rem auto;
+  }
+
+  .main-feed {
+    position: relative;
+    height: auto;
+    width: 95vw;
+    padding: 1rem 0.5rem;
+    display: block;
+  }
+  .bar {
+    position: absolute;
+    top: 0;
+    left: 38vw;
+    height: 0.5rem;
+    width: 10rem;
+    background-color: gold;
+  }
+  .date {
+    text-align: center;
+  }
+  .date span {
+    margin: 0;
+  }
+}
+
+@media (max-width: 650px) {
+  .bar {
+    left: 35vw;
+    width: 10rem;
+    background-color: gold;
+  }
+  .form-section {
+    width: 23rem;
+    margin: 1rem auto;
+  }
+  .search-field {
+    outline: 0;
+    height: 2.5rem;
+    width: 17rem;
+  }
+  .clear-search-btn {
+    cursor: pointer;
+    position: relative;
+    left: 17rem;
+  }
+}
+@media (max-width: 500px) {
+  .bar {
+    left: 34vw;
+    width: 8rem;
+    background-color: gold;
+  }
+}
+@media (max-width: 400px) {
+  .bar {
+    left: 32vw;
+    width: 8rem;
+    background-color: gold;
   }
 }
