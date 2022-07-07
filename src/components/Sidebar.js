@@ -3,9 +3,6 @@ import React from 'react';
 function Sidebar() {
   return (
     <>
-      <div className='bars'>
-        <i className='fa-solid fa-bars'></i>
-      </div>
       <aside>
         <h3 className='logo'>News App</h3>
         <ul className='nav'>
