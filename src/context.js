@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect, useCallback } from 'react';
 
 let everythingtUrl =
-  'https://newsapi.org/v2/everything?q=tech&language=en&sortBy=publishedAt&apiKey=6e52cffd5f074007a9b69ca930fc5663';
+  'https://newsapi.org/v2/everything?q=everything&language=en&sortBy=publishedAt&apiKey=6e52cffd5f074007a9b69ca930fc5663';
 const key = '6e52cffd5f074007a9b69ca930fc5663';
 
 const AppContext = React.createContext();
@@ -13,27 +13,21 @@ const AppProvider = ({ children }) => {
   const [search, setSearch] = useState('');
   const [country, setCountry] = useState('');
   const [category, setCategory] = useState('');
+  const [sidebarActive, setSidebarActive] = useState(false);
 
   useEffect(() => {
     if (search) {
       setUrl(
         `https://newsapi.org/v2/everything?q=${search}&language=en&sortBy=publishedAt&apiKey=${key}`
       );
-    }
-    if (country && category) {
-      setUrl(
-        `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&language&apiKey=6e52cffd5f074007a9b69ca930fc5663`
-      );
+    } else {
+      setUrl(everythingtUrl);
     }
     if (category) {
       setUrl(
-        `https://newsapi.org/v2/top-headlines?category=${category}&language&apiKey=6e52cffd5f074007a9b69ca930fc5663`
+        `https://newsapi.org/v2/top-headlines?category=${category}&language=en&apiKey=6e52cffd5f074007a9b69ca930fc5663`
       );
-    }
-    if (country) {
-      setUrl(
-        `https://newsapi.org/v2/top-headlines?country=${country}&language&apiKey=6e52cffd5f074007a9b69ca930fc5663`
-      );
+      setSidebarActive(false);
     }
   }, [search, category, country]);
   const fetchNews = useCallback(async () => {
@@ -77,14 +71,17 @@ const AppProvider = ({ children }) => {
     fetchNews();
   }, [search, country, category, fetchNews]);
 
-  const searchHandler = (e) => {
-    e.preventDefault();
-    setSearch(search);
-  };
-
   return (
     <AppContext.Provider
-      value={{ setSearch, search, news, searchHandler, loading }}
+      value={{
+        setSearch,
+        search,
+        news,
+        loading,
+        sidebarActive,
+        setSidebarActive,
+        setCategory,
+      }}
     >
       {children}
     </AppContext.Provider>

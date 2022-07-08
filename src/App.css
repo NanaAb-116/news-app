@@ -5,33 +5,74 @@
 }
 
 /* sidebar  */
-aside {
-  display: none;
+.sidebar {
+  transform: translateX(-100%);
   position: fixed;
-  z-index: 1;
+  z-index: 2;
   height: 100vh;
   width: 20rem;
   background-color: bisque;
+  transition: 1s ease;
+}
+.sidebar-active {
+  transform: translateX(0);
+  position: fixed;
+  z-index: 2;
+  height: 100vh;
+  width: 20rem;
+  background-color: bisque;
+  transition: 1s ease;
+}
+.overlay {
+  position: fixed;
+  z-index: 1;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.371);
+  transition: 1s ease;
 }
 .logo {
   font-size: 3rem;
-  margin: 0.75rem;
+  /* margin: 0.75rem; */
+  margin-left: 4rem;
 }
 .nav {
   display: flex;
   flex-direction: column;
 }
 .nav-item {
+  cursor: pointer;
   font-size: 1.5rem;
-  margin: 0.75rem;
+  margin: 0.5rem;
+  padding: 0.25rem;
+  transition: 0.5s ease;
+}
+.nav-item:hover {
+  background-color: rgb(253, 213, 164);
+  border-radius: 1rem;
+  padding-left: 0.5rem;
+  transition: 0.5s ease;
 }
 /* end sidebar  */
 .bars {
+  cursor: pointer;
+  z-index: 1;
+  position: absolute;
+  left: 1rem;
+  top: 0.5rem;
+  font-size: 2rem;
+}
+.bars-sidebar {
+  z-index: 1;
   cursor: pointer;
   position: fixed;
   left: 1rem;
   top: 0.5rem;
   font-size: 2rem;
+}
+
+.section-center {
+  z-index: 0;
 }
 /* search form  */
 .form-section {
@@ -86,3 +127,49 @@ aside {
   background-color: rgba(255, 219, 75, 0.885);
 }
 /*end of news feed  */
+
+@media (max-width: 991px) {
+  .form-section {
+    width: 40rem;
+  }
+  .clear-search-btn {
+    left: 35rem;
+  }
+  .search-field {
+    width: 35rem;
+  }
+}
+@media (max-width: 767px) {
+  .form-section {
+    margin-left: 3rem;
+    width: 30rem;
+  }
+  .clear-search-btn {
+    left: 25rem;
+  }
+  .search-field {
+    width: 25rem;
+  }
+}
+@media (max-width: 625px) {
+  .form-section {
+    width: 25rem;
+  }
+  .clear-search-btn {
+    left: 18rem;
+  }
+  .search-field {
+    width: 18rem;
+  }
+}
+@media (max-width: 500px) {
+  .form-section {
+    width: 20rem;
+  }
+  .clear-search-btn {
+    left: 15rem;
+  }
+  .search-field {
+    width: 15rem;
+  }
+}
