@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect, useCallback } from 'react';
+import ReactPaginate from 'react-paginate';
 
 let everythingtUrl =
   'https://newsapi.org/v2/everything?q=everything&language=en&sortBy=publishedAt&apiKey=6e52cffd5f074007a9b69ca930fc5663';
@@ -11,7 +12,6 @@ const AppProvider = ({ children }) => {
   const [url, setUrl] = useState(everythingtUrl);
   const [news, setNews] = useState([]);
   const [search, setSearch] = useState('');
-  const [country, setCountry] = useState('');
   const [category, setCategory] = useState('');
   const [sidebarActive, setSidebarActive] = useState(false);
 
@@ -29,7 +29,7 @@ const AppProvider = ({ children }) => {
       );
       setSidebarActive(false);
     }
-  }, [search, category, country]);
+  }, [search, category]);
   const fetchNews = useCallback(async () => {
     setLoading(true);
     try {
@@ -69,7 +69,8 @@ const AppProvider = ({ children }) => {
 
   useEffect(() => {
     fetchNews();
-  }, [search, country, category, fetchNews]);
+    console.log(url);
+  }, [search, category, fetchNews]);
 
   return (
     <AppContext.Provider
@@ -81,6 +82,7 @@ const AppProvider = ({ children }) => {
         sidebarActive,
         setSidebarActive,
         setCategory,
+        category,
       }}
     >
       {children}

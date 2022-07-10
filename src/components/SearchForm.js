@@ -2,7 +2,8 @@ import React, { useRef, useEffect } from 'react';
 import { useGlobalContext } from '../context';
 
 function SearchForm() {
-  const { search, setSearch, setSidebarActive } = useGlobalContext();
+  const { search, setSearch, setSidebarActive, category, setCategory } =
+    useGlobalContext();
   const searchValue = useRef('');
 
   useEffect(() => {
@@ -15,22 +16,22 @@ function SearchForm() {
     clearTimeout(searchTimeout);
 
     searchTimeout = setTimeout(() => {
-      console.log(searchValue.current.value);
+      // console.log(searchValue.current.value);
       setSearch(searchValue.current.value);
+      setCategory('');
     }, 1000);
   };
+  if (category) {
+    searchValue.current.value = '';
+  }
 
-  const searchHandler = (e) => {
-    e.preventDefault();
-    setSearch(searchValue.current.value);
-  };
   return (
     <div className='container'>
       <div className='row mx-auto'>
         <div className='bars' onClick={() => setSidebarActive(true)}>
           <i className='fa-solid fa-bars'></i>
         </div>
-        <form className='form-section' onSubmit={searchHandler}>
+        <form className='form-section'>
           {search && (
             <button
               className='clear-search-btn'
@@ -45,9 +46,6 @@ function SearchForm() {
             ref={searchValue}
             onChange={sea}
           />
-          <button type='submit' className='search-btn'>
-            <i className='fa-solid fa-magnifying-glass'></i>
-          </button>
         </form>
       </div>
     </div>
