@@ -1,9 +1,8 @@
-import React, { useContext, useState, useEffect, useCallback } from 'react';
-import ReactPaginate from 'react-paginate';
+import React, { useContext, useState, useEffect, useCallback } from "react";
 
-let everythingtUrl =
-  'https://newsapi.org/v2/everything?q=everything&language=en&sortBy=publishedAt&apiKey=6e52cffd5f074007a9b69ca930fc5663';
-const key = '6e52cffd5f074007a9b69ca930fc5663';
+const key = process.env.REACT_APP_NEWS_API_KEY;
+
+let everythingtUrl = `https://newsapi.org/v2/everything?q=tech&language=en&sortBy=publishedAt&apiKey=${key}`;
 
 const AppContext = React.createContext();
 
@@ -11,8 +10,8 @@ const AppProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [url, setUrl] = useState(everythingtUrl);
   const [news, setNews] = useState([]);
-  const [search, setSearch] = useState('');
-  const [category, setCategory] = useState('');
+  const [search, setSearch] = useState("");
+  const [category, setCategory] = useState("");
   const [sidebarActive, setSidebarActive] = useState(false);
 
   useEffect(() => {
@@ -25,7 +24,7 @@ const AppProvider = ({ children }) => {
     }
     if (category) {
       setUrl(
-        `https://newsapi.org/v2/top-headlines?category=${category}&language=en&apiKey=6e52cffd5f074007a9b69ca930fc5663`
+        `https://newsapi.org/v2/top-headlines?category=${category}&language=en&apiKey=${key}`
       );
       setSidebarActive(false);
     }
@@ -69,7 +68,6 @@ const AppProvider = ({ children }) => {
 
   useEffect(() => {
     fetchNews();
-    console.log(url);
   }, [search, category, fetchNews]);
 
   return (

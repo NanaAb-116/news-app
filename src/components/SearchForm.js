@@ -31,7 +31,7 @@ function SearchForm() {
         <div className='bars' onClick={() => setSidebarActive(true)}>
           <i className='fa-solid fa-bars'></i>
         </div>
-        <form className='form-section'>
+        <form className='form-section' onSubmit={(e) => e.preventDefault()}>
           {search && (
             <button
               className='clear-search-btn'
